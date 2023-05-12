@@ -35,26 +35,22 @@ describe Board do
   end
 
   describe "#render" do
-    xit "render the current state of the board" do
-      game.place_token(0, 'X')
-      game.place_token(3, 'X')
-      game.place_token(5, 'X')
+    it "render the current state of the board without tokens" do
+      game.grid[0][0] = 'X'
+      game.grid[0][1] = 'O'
 
-      expected_output = <<~BOARD
+      expected_output = <<~OUTPUT
+        | · | · | · | · | · | · | · |
+        | · | · | · | · | · | · | · |
+        | · | · | · | · | · | · | · |
+        | · | · | · | · | · | · | · |
+        | · | · | · | · | · | · | · |
+        | \e[31m●\e[0m | \e[34m●\e[0m | · | · | · | · | · |
+        -----------------------------
         | 0 | 1 | 2 | 3 | 4 | 5 | 6 |
-        |---------------------------|
-        | X | O |   | X |   |   |   |
-        |---------------------------|
-        |   |   |   |   |   |   |   |
-        |---------------------------|
-        |   |   |   |   |   |   |   |
-        |---------------------------|
-        |   |   |   |   |   |   |   |
-        |---------------------------|
-        |   |   |   |   |   |   |   |
-      BOARD
+      OUTPUT
 
-      expect { game.render }.to output(expected_output).to_stdout
+      expect { game.render_board }.to output(expected_output).to_stdout
     end
   end
 end

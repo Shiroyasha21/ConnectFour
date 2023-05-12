@@ -13,8 +13,10 @@ class Game
 
     if index.is_a?(Integer)
       @new_game.grid[index][place] = symbol
+      @new_game.render_board
     else
       puts 'The move is invalid, try again.'
     end
   end
 end
+
