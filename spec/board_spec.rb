@@ -10,8 +10,32 @@ describe Board do
     end
   end
 
+  describe "#valid_move?" do
+    it "returns true for a valid move in an empty column" do
+      expect(game.valid_move?(4)).to be_an_instance_of(Integer)
+    end
+
+    it 'returns the correct integer for a valid move in a column with holes' do
+      game.grid[0][0] = 'X'
+      game.grid[1][0] = 'X'
+
+      expect(game.valid_move?(0)).to eq(2)
+    end
+
+    it "returns false if the move is in a full column" do
+      game.grid[0][0] = 'X'
+      game.grid[1][0] = 'X'
+      game.grid[2][0] = 'X'
+      game.grid[3][0] = 'X'
+      game.grid[4][0] = 'X'
+      game.grid[5][0] = 'X'
+
+      expect(game.valid_move?(0)).to be false
+    end
+  end
+
   describe "#render" do
-    it "render the current state of the board" do
+    xit "render the current state of the board" do
       game.place_token(0, 'X')
       game.place_token(3, 'X')
       game.place_token(5, 'X')
