@@ -1,6 +1,6 @@
 # The Board of the Game
 class Board
-  attr_reader :grid
+  attr_accessor :grid
 
   def initialize
     @grid = Array.new(6) { Array.new(7, ' ') }

@@ -2,7 +2,7 @@
 require_relative '../lib/game'
 
 describe Game do
-  let(:game) { Board.new }
+  let(:game) { Game.new }
 
   describe "#place_token" do
     it "place the player's token in the board" do
@@ -36,4 +36,6 @@ describe Game do
       expect { game.place_token(0, 'X') }.to output("The move is invalid, try again.\n").to_stdout
     end
   end
+
+  
 end
